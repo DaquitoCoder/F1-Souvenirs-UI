@@ -53,7 +53,7 @@ const CartModal = ({ isOpen, onClose }) => {
                 )}
                 {cart.map((item) => (
                   <div
-                    className='card-row text-center flex flex-row justify-center items-center border-b border-black max-w-[400px]'
+                    className='card-row text-center flex flex-col md:flex-row justify-evenly items-center border-b border-black w-[calc(100%-2rem)]'
                     key={item._id}
                   >
                     <div className='card-image m-2 text-center max-w-[150px] max-h-[150px]'>
@@ -75,7 +75,7 @@ const CartModal = ({ isOpen, onClose }) => {
                         ${item.price}
                       </Typography>
                     </div>
-                    <div className='card-buttons flex justify-center items-center gap-2'>
+                    <div className='card-buttons flex justify-center items-center gap-2 mb-2'>
                       <Button
                         type='button'
                         variant='light'
