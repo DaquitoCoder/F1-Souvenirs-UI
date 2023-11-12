@@ -83,6 +83,11 @@ export function CartProvider({ children }) {
     updateLocalStorage([]);
   };
 
+  const checkProductInCart = (product) => {
+    return cart.some((item) => item._id === product._id);
+  };
+
+
   return (
     <CartContext.Provider
       value={{
@@ -92,6 +97,7 @@ export function CartProvider({ children }) {
         addToCart,
         removeFromCart,
         clearCart,
+        checkProductInCart
       }}
     >
       {children}
