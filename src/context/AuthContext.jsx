@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
       const res = await registerRequest(user);
       if (!res.data) return;
     } catch (error) {
-      setErrors(error.response.data.message);
+      setErrors([error.response.data.message]);
     }
   };
 
@@ -45,11 +45,10 @@ export const AuthProvider = ({ children }) => {
       const res = await loginRequest(user);
       localStorage.setItem('token', res.data.token);
       const userDecoded = jwtDecode(res.data.token);
-      console.log(userDecoded.user);
       setUser(userDecoded.user);
       setIsAuthenticated(true);
     } catch (error) {
-      setErrors(error.response.data.message);
+      setErrors([error.response.data.message]);
     }
   };
 
