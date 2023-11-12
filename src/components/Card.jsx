@@ -10,11 +10,8 @@ import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 
 const Card = ({ item, storeButtons, cartButtons, className }) => {
-  const { cart, removeFromCart, addToCart } = useCart();
+  const { removeFromCart, addToCart, checkProductInCart} = useCart();
 
-  const checkProductInCart = (product) => {
-    return cart.some((item) => item._id === product._id);
-  };
 
   const isProductInCart = checkProductInCart(item);
 
