@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import SimplePage from '../components/SimplePage';
+import Alert from '../components/Alert';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
@@ -21,7 +22,7 @@ const SignUp = () => {
   };
 
   const navigate = useNavigate();
-  const { isAuthenticated, signup } = useAuth();
+  const { isAuthenticated, signup, errors: serverErrors } = useAuth();
 
   useEffect(() => {
     if (isAuthenticated) return navigate('/');
@@ -42,8 +43,7 @@ const SignUp = () => {
   return (
     <SimplePage>
       <div className='bg-white flex flex-col items-center justify-center py-24'>
-        {/* {serverErrors && <Alert message={serverErrors.response.data.message} />}
-        {data && <Alert message={data.message} />} */}
+        {serverErrors.length > 0 && <Alert message={serverErrors[0]} />}
         <div className='login-card mx-4 min-w-fit border px-4 pt-2 pb-4 border-black rounded-xl bg-gray-300 w-[400px]'>
           <div className='login-card-title flex gap-2 flex-col sm:flex-row justify-around items-center mb-4'>
             <Link to={'/login'}>Inicio de sesión</Link>

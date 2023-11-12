@@ -1,6 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import SimplePage from '../components/SimplePage';
 import Typography from '../components/Typography';
+import Alert from '../components/Alert';
 import { IconUserCircle } from '@tabler/icons-react';
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
@@ -21,15 +22,14 @@ const Login = () => {
     if (isAuthenticated) return navigate('/');
   }, [isAuthenticated, navigate]);
 
-  const onSubmit = (data) => {
-    signin(data);
-    console.log(data);
-    console.log('tamadre', serverErrors);
+  const onSubmit = async (data) => {
+    await signin(data);
   };
 
   return (
     <SimplePage>
       <div className='bg-white flex flex-col items-center justify-center py-24'>
+        {serverErrors.length > 0 && <Alert message={serverErrors[0]} />}
         <div className='login-card mx-4 min-w-fit border px-4 pt-2 pb-4 border-black rounded-xl bg-gray-300 w-[400px]'>
           <div className='login-card-title flex gap-2 flex-col sm:flex-row justify-around items-center mb-4'>
             <p className='border border-black p-2 rounded-md bg-white'>
@@ -81,7 +81,7 @@ const Login = () => {
                 <input
                   type='submit'
                   value='Iniciar sesión'
-                  className='bg-[#B40500] hover:bg-red-700 py-2 px-4 rounded-xl text-white'
+                  className='bg-[#B40500] hover:bg-red-700 focus:outline-none focus:ring-red-500 active:bg-red-800 py-2 px-4 rounded-xl text-white'
                 />
                 <Typography variant='p' className='text-center'>
                   <Link to={'/forgot-password'}>¿Olvidaste la contraseña?</Link>
