@@ -7,6 +7,8 @@ import Product from './views/Product';
 import { CartProvider } from './context/CartContext';
 import { AuthProvider } from './context/AuthContext';
 import { ProtectedRoute } from './routes';
+import Profile from './views/Profile';
+import Logout from './views/Logout';
 
 function App() {
   return (
@@ -16,13 +18,15 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path='/' element={<Home />} />
-              <Route path='/logout' element={<h1>Logout</h1>} />
+              <Route path='/logout' element={<Logout />} />
               <Route path='/login' element={<Login />} />
               <Route path='/signup' element={<SignUp />} />
               <Route path='/cart' element={<h1>Cart</h1>} />
               <Route path='/product/:id' element={<Product />} />
               <Route element={<ProtectedRoute />}>
-                <Route path='/profile' element={<h1>User</h1>} />
+                <Route path='/profile' element={<Profile />} />
+                <Route path='/edit-profile' element={<h1>Edit Profile</h1>} />
+                <Route path='/my-products' element={<h1>My Products</h1>} />
               </Route>
               <Route
                 path='*'
