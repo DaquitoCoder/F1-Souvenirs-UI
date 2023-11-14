@@ -9,7 +9,6 @@ const Button = (props) => {
     danger:
       'bg-[#B40500] hover:bg-red-700 rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 active:bg-red-800',
     warning: 'bg-yellow-500 hover:bg-yellow-700 rounded',
-    info: 'bg-blue-500 hover:bg-blue-700 rounded',
     light: 'bg-gray-100 hover:bg-gray-200 rounded',
     dark: 'bg-gray-700 hover:bg-gray-800 rounded',
     link: 'bg-transparent hover:text-neutral-300 rounded',
