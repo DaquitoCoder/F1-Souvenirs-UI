@@ -3,7 +3,8 @@ import SimplePage from '../components/SimplePage';
 import { getProductById } from '../hooks/products/products';
 import { useState, useEffect } from 'react';
 import Button from '../components/Button';
-import { IconShoppingCart, IconShoppingCartOff } from '@tabler/icons-react';
+import IconCart from '../assets/IconCart';
+import IconNoCart from '../assets/IconNoCart';
 import Typography from '../components/Typography';
 import { useCart } from '../context/CartContext';
 
@@ -68,9 +69,9 @@ const Product = () => {
                 }`}
                 icon={
                   !isProductInCart ? (
-                    <IconShoppingCart size={24} />
+                    <IconCart size={24} />
                   ) : (
-                    <IconShoppingCartOff size={24} />
+                    <IconNoCart size={24} />
                   )
                 }
                 onClick={() => {
