@@ -1,17 +1,14 @@
 import Button from './Button';
-import {
-  IconShoppingCart,
-  IconPlus,
-  IconShoppingCartOff,
-  IconMinus,
-} from '@tabler/icons-react';
+import { IconPlus } from '@tabler/icons-react';
 import Typography from './Typography';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 
-const Card = ({ item, storeButtons, cartButtons, className }) => {
-  const { removeFromCart, addToCart, checkProductInCart} = useCart();
+import IconCart from '../assets/IconCart';
+import IconNoCart from '../assets/IconNoCart';
 
+const Card = ({ item, storeButtons, className }) => {
+  const { removeFromCart, addToCart, checkProductInCart } = useCart();
 
   const isProductInCart = checkProductInCart(item);
 
@@ -51,9 +48,9 @@ const Card = ({ item, storeButtons, cartButtons, className }) => {
               }`}
               icon={
                 !isProductInCart ? (
-                  <IconShoppingCart size={24} />
+                  <IconCart size={24} />
                 ) : (
-                  <IconShoppingCartOff size={24} />
+                  <IconNoCart size={24} />
                 )
               }
               onClick={() => {
@@ -72,26 +69,6 @@ const Card = ({ item, storeButtons, cartButtons, className }) => {
                 Ver más
               </Button>
             </Link>
-          </>
-        )}
-
-        {cartButtons && isProductInCart && (
-          <>
-            <Button
-              type='button'
-              variant='light'
-              className='p-0.5 border border-black'
-              onClick={() => addToCart(item)}
-              icon={<IconPlus size={24} />}
-            />
-            Cantidad: {item.quantity}
-            <Button
-              type='button'
-              variant='light'
-              className='p-0.5 border border-black'
-              onClick={() => removeFromCart(item)}
-              icon={<IconMinus size={24} />}
-            />
           </>
         )}
       </div>
