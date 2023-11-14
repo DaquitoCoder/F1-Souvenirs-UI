@@ -34,13 +34,14 @@ const Home = () => {
       <Container className='bg-white pb-4'>
         <Hero />
         {loading && <Loader />}
+
         {error && <Alert message={error.message} />}
 
         {data && (
           <>
             {data.map((category) => (
               <div
-                className='products-category mx-6 my-6 lg:mx-24'
+                className='products-category mx-6 mb -6 lg:mx-24'
                 key={category._id}
               >
                 <div className='products-category-title flex flex-wrap justify-between mb-4'>
