@@ -11,7 +11,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated } = useAuth();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -104,7 +104,7 @@ const Navbar = () => {
                     className='mb-4 pl-2 lg:mb-0 lg:me-4 lg:pl-0 lg:pr-1'
                     data-te-nav-item-ref
                   >
-                    Hola, {user && user.firstName}!
+                    <Link to='/profile'>Hola, {user && user.firstName}!</Link>
                   </div>
                   <div
                     className='mb-4 pl-2 lg:mb-0 lg:me-4 lg:pl-0 lg:pr-1'
@@ -114,9 +114,8 @@ const Navbar = () => {
                       type='button'
                       variant='danger'
                       className='text-white px-2 py-2'
-                      onClick={logout}
                     >
-                      Cerrar sesión
+                      <Link to='/logout'>Cerrar sesión</Link>
                     </Button>
                   </div>
                 </>
