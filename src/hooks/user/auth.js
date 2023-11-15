@@ -10,3 +10,5 @@ export const verifyTokenRequest = async (token) =>
       Authorization: `Bearer ${token}`,
     },
   });
+
+export const editUserDataRequest = async (user) => axios.put(`/user/${user.id}`, user);
