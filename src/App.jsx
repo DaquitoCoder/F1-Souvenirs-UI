@@ -9,6 +9,7 @@ import { AuthProvider } from './context/AuthContext';
 import { ProtectedRoute } from './routes';
 import Profile from './views/Profile';
 import Logout from './views/Logout';
+import EditProfile from './views/EditProfile';
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
               <Route path='/product/:id' element={<Product />} />
               <Route element={<ProtectedRoute />}>
                 <Route path='/profile' element={<Profile />} />
-                <Route path='/edit-profile' element={<h1>Edit Profile</h1>} />
+                <Route path='/edit-profile' element={<EditProfile />} />
                 <Route path='/my-products' element={<h1>My Products</h1>} />
               </Route>
               <Route
