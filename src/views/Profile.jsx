@@ -12,7 +12,7 @@ const Profile = () => {
     <SimplePage>
       <div className='bg-white flex flex-col items-center justify-center py-12'>
         <div className='border rounded-md border-gray-400 flex items-center justify-center md:justify-around flex-col lg:flex-row mx-24 w-[calc(100%-6rem)] gap-4'>
-          <div className='login-icon w-fit p-2 text-center rounded-full border border-black bg-white'>
+          <div className='login-icon w-fit p-2 mt-4 text-center rounded-full border border-black bg-white'>
             <IconUserCircle size='128px' />
           </div>
           <div className='card-body'>
@@ -29,12 +29,12 @@ const Profile = () => {
               </Typography>
             </div>
             <div className='card-body-content mb-4'>
-              <Typography variant='body1' className='text-center'>
+              <Typography variant='p' className='text-center'>
                 <strong>Nombre: </strong>
                 {user.firstName + ' ' + user.lastName}
               </Typography>
               <br />
-              <Typography variant='body1' className='text-center'>
+              <Typography variant='p' className='text-center'>
                 <strong>Correo electrónico: </strong>
                 {user.email}
               </Typography>
