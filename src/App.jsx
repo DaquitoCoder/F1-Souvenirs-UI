@@ -11,6 +11,7 @@ import Profile from './views/Profile';
 import Logout from './views/Logout';
 import EditProfile from './views/EditProfile';
 import Products from './views/Products';
+import MyProducts from './views/MyProducts';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
               <Route element={<ProtectedRoute />}>
                 <Route path='/profile' element={<Profile />} />
                 <Route path='/edit-profile' element={<EditProfile />} />
-                <Route path='/my-products' element={<h1>My Products</h1>} />
+                <Route path='/my-products' element={<MyProducts />} />
               </Route>
               <Route
                 path='*'
