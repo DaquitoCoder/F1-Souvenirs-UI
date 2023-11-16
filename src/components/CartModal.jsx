@@ -2,7 +2,6 @@ import Typography from './Typography';
 import { useCart } from '../context/CartContext';
 import Button from './Button';
 import { IconMinus, IconPlus } from '@tabler/icons-react';
-// import Card from './Card';
 
 const CartModal = ({ isOpen, onClose }) => {
   const { cart, clearCart, cartTotal, removeFromCart, addToCart } = useCart();
