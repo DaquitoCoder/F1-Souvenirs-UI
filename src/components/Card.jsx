@@ -1,5 +1,5 @@
 import Button from './Button';
-import { IconPlus } from '@tabler/icons-react';
+import { IconPlus, IconEdit, IconTrash } from '@tabler/icons-react';
 import Typography from './Typography';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import IconCart from '../assets/IconCart';
 import IconNoCart from '../assets/IconNoCart';
 
-const Card = ({ item, storeButtons, className }) => {
+const Card = ({ item, storeButtons, className, editButtons }) => {
   const { removeFromCart, addToCart, checkProductInCart } = useCart();
 
   const isProductInCart = checkProductInCart(item);
@@ -67,6 +67,36 @@ const Card = ({ item, storeButtons, className }) => {
                 icon={<IconPlus size={24} />}
               >
                 Ver más
+              </Button>
+            </Link>
+          </>
+        )}
+        {editButtons && (
+          <>
+            <Link
+              to={'/edit-product/' + item._id}
+              className='flex justify-center'
+            >
+              <Button
+                type='button'
+                variant='light'
+                className='p-2 w-full flex flex-col md:flex-row justify-between items-center text-md border border-black'
+                icon={<IconEdit size={24} />}
+              >
+                Editar
+              </Button>
+            </Link>
+            <Link
+              to={'/delete-product/' + item._id}
+              className='flex justify-center'
+            >
+              <Button
+                type='button'
+                variant='light'
+                className='p-2 w-full flex flex-col md:flex-row justify-between items-center text-md border border-black'
+                icon={<IconTrash size={24} />}
+              >
+                Eliminar
               </Button>
             </Link>
           </>
