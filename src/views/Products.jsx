@@ -10,10 +10,8 @@ const Products = () => {
   const fetchData = async () => {
     try {
       const res = await getAllProducts();
-      console.log(res);
       setDataProducts(res.data);
     } catch (error) {
-      console.log(error);
       setDataProducts(error.response.data.errors);
     }
   };
@@ -28,7 +26,7 @@ const Products = () => {
         <div className='products-title mb-8'>
           <Typography variant='h1'>Todos los productos</Typography>
         </div>
-        <div className='products-category-items mx- grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5'>
+        <div className='products-category-items mx-grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5'>
           {dataProducts && dataProducts.length > 0 ? (
             <>
               {dataProducts.map((product) => (
