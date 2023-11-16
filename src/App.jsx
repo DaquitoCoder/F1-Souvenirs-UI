@@ -10,6 +10,7 @@ import { ProtectedRoute } from './routes';
 import Profile from './views/Profile';
 import Logout from './views/Logout';
 import EditProfile from './views/EditProfile';
+import Products from './views/Products';
 
 function App() {
   return (
@@ -22,8 +23,9 @@ function App() {
               <Route path='/logout' element={<Logout />} />
               <Route path='/login' element={<Login />} />
               <Route path='/signup' element={<SignUp />} />
-              <Route path='/cart' element={<h1>Cart</h1>} />
+              <Route path='/products' element={<Products />} />
               <Route path='/product/:id' element={<Product />} />
+              <Route path='/checkout' element={<h1>Checkout</h1>} />
               <Route element={<ProtectedRoute />}>
                 <Route path='/profile' element={<Profile />} />
                 <Route path='/edit-profile' element={<EditProfile />} />
