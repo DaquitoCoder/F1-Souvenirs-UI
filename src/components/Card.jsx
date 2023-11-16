@@ -7,7 +7,13 @@ import { Link } from 'react-router-dom';
 import IconCart from '../assets/IconCart';
 import IconNoCart from '../assets/IconNoCart';
 
-const Card = ({ item, storeButtons, className, editButtons }) => {
+const Card = ({
+  item,
+  storeButtons,
+  className,
+  editButtons,
+  buttonDeleteAction,
+}) => {
   const { removeFromCart, addToCart, checkProductInCart } = useCart();
 
   const isProductInCart = checkProductInCart(item);
@@ -86,19 +92,15 @@ const Card = ({ item, storeButtons, className, editButtons }) => {
                 Editar
               </Button>
             </Link>
-            <Link
-              to={'/delete-product/' + item._id}
-              className='flex justify-center'
+            <Button
+              type='button'
+              variant='light'
+              className='p-2 w-full flex flex-col md:flex-row justify-between items-center text-md border border-black'
+              icon={<IconTrash size={24} />}
+              onClick={() => buttonDeleteAction(item)}
             >
-              <Button
-                type='button'
-                variant='light'
-                className='p-2 w-full flex flex-col md:flex-row justify-between items-center text-md border border-black'
-                icon={<IconTrash size={24} />}
-              >
-                Eliminar
-              </Button>
-            </Link>
+              Eliminar
+            </Button>
           </>
         )}
       </div>
