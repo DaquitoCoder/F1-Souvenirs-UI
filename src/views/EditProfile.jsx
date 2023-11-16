@@ -39,7 +39,6 @@ const EditProfile = () => {
   }, [data]);
 
   const onSubmit = async (data) => {
-    console.log(user.id)
     const newUser = {
       firstName: data.firstName,
       lastName: data.lastName,
