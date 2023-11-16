@@ -43,7 +43,7 @@ const Card = ({ item, storeButtons, className }) => {
             <Button
               type='button'
               variant={isProductInCart ? 'danger' : 'light'}
-              className={`p-2 text-md border border-black ${
+              className={`p-1 w-full flex flex-col lg:flex-row justify-center items-center text-md border border-black ${
                 isProductInCart ? 'bg-red-500 text-white' : ''
               }`}
               icon={
@@ -63,7 +63,7 @@ const Card = ({ item, storeButtons, className }) => {
               <Button
                 type='button'
                 variant='light'
-                className='p-2 text-md border border-black'
+                className='p-1 w-full flex flex-col justify-between items-center text-md border border-black'
                 icon={<IconPlus size={24} />}
               >
                 Ver más
