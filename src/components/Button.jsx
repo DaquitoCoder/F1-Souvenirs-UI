@@ -22,7 +22,7 @@ const Button = (props) => {
       } flex items-center`}
       onClick={props.onClick}
     >
-      {props.icon && <div className='icon mr-2'>{props.icon}</div>}
+      {props.icon && <div className='icon'>{props.icon}</div>}
       {props.children}
     </button>
   );
