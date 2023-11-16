@@ -8,3 +8,5 @@ export const getAllProducts = async () => axios.get(`/products`);
 
 export const getAllProductsBySeller = async (id) =>
   axios.get(`/products/seller/${id}`);
+
+export const deleteProductById = async (id) => axios.delete(`/products/${id}`);
