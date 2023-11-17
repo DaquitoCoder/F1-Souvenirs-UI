@@ -19,7 +19,7 @@ const Button = (props) => {
       type='button'
       className={`${classNames[props.variant]}${
         props.className ? ` ${props.className}` : ''
-      } flex items-center`}
+      } flex items-center gap-2`}
       onClick={props.onClick}
     >
       {props.icon && <div className='icon'>{props.icon}</div>}
