@@ -80,7 +80,7 @@ const Card = ({
         {editButtons && (
           <>
             <Link
-              to={'/edit-product/' + item._id}
+              to={'/profile/edit-product/' + item._id}
               className='flex justify-center'
             >
               <Button
