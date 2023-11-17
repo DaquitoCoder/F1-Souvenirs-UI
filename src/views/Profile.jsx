@@ -40,7 +40,7 @@ const Profile = () => {
               </Typography>
             </div>
             <div className='card-body-buttons flex flex-col md:flex-row gap-2 mb-4'>
-              <Link to='/edit-profile' className='w-full'>
+              <Link to='/profile/edit-profile' className='w-full'>
                 <Button
                   variant='danger'
                   className='w-full px-2 py-4 text-white justify-center'
@@ -48,7 +48,7 @@ const Profile = () => {
                   Editar perfil
                 </Button>
               </Link>
-              <Link to='/my-products' className='w-full'>
+              <Link to='/profile/my-products' className='w-full'>
                 <Button
                   variant='light'
                   className='w-full px-2 py-4 text-black border border-gray-300 justify-center'
