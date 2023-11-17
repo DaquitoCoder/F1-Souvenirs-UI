@@ -31,7 +31,7 @@ const Navbar = () => {
         data-te-navbar-ref
       >
         <div className='flex w-full flex-wrap items-center justify-between lg:mx-24 mx-6'>
-          <div className=''>
+          <div className='nav-logo'>
             <Typography variant='h2'>
               <Link to='/'>F1 SOUVENIRS</Link>
             </Typography>
@@ -58,7 +58,7 @@ const Navbar = () => {
             data-te-collapse-item
           >
             <div
-              className='list-style-none ms-auto items-center flex flex-col pl-0 lg:mt-1 lg:flex-row'
+              className='list-style-none ms-auto items-center justify-center flex flex-col pl-0 lg:mt-1 lg:flex-row'
               data-te-navbar-nav-ref
             >
               <div
@@ -80,22 +80,30 @@ const Navbar = () => {
                     className='mb-4 pl-2 lg:mb-0 lg:me-4 lg:pl-0 lg:pr-1'
                     data-te-nav-item-ref
                   >
-                    <Button type='button' variant='link' className='text-white'>
-                      <Link to='/signup'>Registrarse</Link>
-                    </Button>
+                    <Link to='/signup'>
+                      <Button
+                        type='button'
+                        variant='link'
+                        className='text-white'
+                      >
+                        Registrarse
+                      </Button>
+                    </Link>
                   </div>
 
                   <div
-                    className='mb-4 pl-2 lg:mb-0 lg:pl-0 lg:pr-1'
+                    className='mb-4 pl-2 lg:mb-0 lg:pl-0'
                     data-te-nav-item-ref
                   >
-                    <Button
-                      type='button'
-                      variant='danger'
-                      className='text-white px-2 py-2'
-                    >
-                      <Link to='/login'>Inicio de sesión</Link>
-                    </Button>
+                    <Link to='/login'>
+                      <Button
+                        type='button'
+                        variant='danger'
+                        className='text-white p-2'
+                      >
+                        Inicio de sesión
+                      </Button>
+                    </Link>
                   </div>
                 </>
               ) : (
@@ -104,19 +112,21 @@ const Navbar = () => {
                     className='mb-4 pl-2 lg:mb-0 lg:me-4 lg:pl-0 lg:pr-1'
                     data-te-nav-item-ref
                   >
-                    <Link to='/profile'>Hola, {user && user.firstName}!</Link>
+                    <Link to='/profile'>¡Hola, {user && user.firstName}!</Link>
                   </div>
                   <div
-                    className='mb-4 pl-2 lg:mb-0 lg:me-4 lg:pl-0 lg:pr-1'
+                    className='mb-4 pl-2 lg:mb-0 lg:pl-0'
                     data-te-nav-item-ref
                   >
-                    <Button
-                      type='button'
-                      variant='danger'
-                      className='text-white px-2 py-2'
-                    >
-                      <Link to='/logout'>Cerrar sesión</Link>
-                    </Button>
+                    <Link to='/logout'>
+                      <Button
+                        type='button'
+                        variant='danger'
+                        className='text-white p-2'
+                      >
+                        Cerrar sesión
+                      </Button>
+                    </Link>
                   </div>
                 </>
               )}
