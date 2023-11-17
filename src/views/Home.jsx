@@ -41,7 +41,7 @@ const Home = () => {
           <>
             {data.map((category) => (
               <div
-                className='products-category mx-6 mb -6 lg:mx-24'
+                className='products-category mx-6 mb-6 lg:mx-24'
                 key={category._id}
               >
                 <div className='products-category-title flex flex-wrap justify-between mb-4'>
