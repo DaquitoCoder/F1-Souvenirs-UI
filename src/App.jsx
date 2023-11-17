@@ -12,6 +12,7 @@ import Logout from './views/Logout';
 import EditProfile from './views/EditProfile';
 import Products from './views/Products';
 import MyProducts from './views/MyProducts';
+import ProductForm from './views/ProductForm';
 
 function App() {
   return (
@@ -28,9 +29,13 @@ function App() {
               <Route path='/product/:id' element={<Product />} />
               <Route path='/checkout' element={<h1>Checkout</h1>} />
               <Route element={<ProtectedRoute />}>
-                <Route path='/profile' element={<Profile />} />
-                <Route path='/edit-profile' element={<EditProfile />} />
-                <Route path='/my-products' element={<MyProducts />} />
+                <Route path='/profile/*'>
+                  <Route path='' element={<Profile />} />
+                  <Route path='new-product' element={<ProductForm />} />
+                  <Route path='edit-product/:id' element={<ProductForm />} />
+                  <Route path='edit-profile' element={<EditProfile />} />
+                  <Route path='my-products' element={<MyProducts />} />
+                </Route>
               </Route>
               <Route
                 path='*'
