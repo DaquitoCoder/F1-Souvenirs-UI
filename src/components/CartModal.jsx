@@ -1,7 +1,8 @@
 import Typography from './Typography';
 import { useCart } from '../context/CartContext';
 import Button from './Button';
-import { IconMinus, IconPlus } from '@tabler/icons-react';
+import { IconMinus, IconPlus, IconX } from '@tabler/icons-react';
+import { Link } from 'react-router-dom';
 
 const CartModal = ({ isOpen, onClose }) => {
   const { cart, clearCart, cartTotal, removeFromCart, addToCart } = useCart();
@@ -41,9 +42,18 @@ const CartModal = ({ isOpen, onClose }) => {
           --> */}
           <div className='relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all max-w-screen-lg sm:my-8 sm:w-full sm:max-w-xl'>
             <div className='bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4'>
-              <Typography variant='h2' className='text-center'>
-                Carrito de compras
-              </Typography>
+              <div className='flex justify-between items-center'>
+                <Typography variant='h2' className='text-center'>
+                  Carrito de compras
+                </Typography>
+                <button
+                  type='button'
+                  className='text-gray-500 hover:text-gray-700 focus:outline-none'
+                  onClick={onClose}
+                >
+                  <IconX size={24} />
+                </button>
+              </div>
               <div className='cart-dashboard text-center py-4 flex flex-row justify-center flex-wrap gap-4'>
                 {cart.length === 0 && (
                   <Typography variant='p'>
@@ -101,20 +111,21 @@ const CartModal = ({ isOpen, onClose }) => {
               </Typography>
             </div>
             <div className='bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6'>
-              <button
-                type='button'
-                className='inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto'
-                onClick={onClose}
-              >
-                Cerrar carrito
-              </button>
-              <button
+              <Link to='/checkout'>
+                <Button
+                  type='button'
+                  className='inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto'
+                >
+                  Ir al Checkout
+                </Button>
+              </Link>
+              <Button
                 type='button'
                 className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto'
                 onClick={clearCart}
               >
                 Limpiar carrito
-              </button>
+              </Button>
             </div>
           </div>
         </div>
