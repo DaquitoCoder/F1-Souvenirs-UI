@@ -34,7 +34,7 @@ const SignUp = () => {
       lastName: data.lastName,
       email: data.email,
       password: data.password,
-      type: 'Admin',
+      type: data.type,
     };
 
     signup(newUser);
@@ -147,11 +147,27 @@ const SignUp = () => {
                   </p>
                 )}
               </div>
+              <div className='form-group mb-6'>
+                <label htmlFor='type'>Tipo de usuario</label>
+                <select
+                  className='bg-gray-50 border border-black text-gray-900 text-sm rounded-lg
+                  focus:ring-blue-500 focus:border-blue-500 w-full p-2.5'
+                  {...register('type', {
+                    required: true,
+                    value: '',
+                    validate: (value) => value !== '' || 'Selecciona un tipo',
+                  })}
+                >
+                  <option value=''>Selecciona un tipo</option>
+                  <option value='Vendedor'>Vendedor</option>
+                  <option value='Comprador'>Comprador</option>
+                </select>
+              </div>
               <div className='form-buttons flex items-center justify-around gap-4 flex-col sm:flex-row'>
                 <input
                   type='submit'
                   value='Registrarse'
-                  className='bg-[#B40500] hover:bg-red-700 py-2 px-4 rounded-xl text-white'
+                  className='bg-[#B40500] hover:bg-red-700 focus:outline-none focus:ring-red-500 active:bg-red-800 py-2 px-4 rounded-xl text-white'
                 />
               </div>
             </form>
