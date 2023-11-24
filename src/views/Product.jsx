@@ -1,17 +1,21 @@
 import { useParams } from 'react-router-dom';
-import SimplePage from '../components/SimplePage';
 import { getProductById } from '../hooks/products/products';
+import { getReviews } from '../hooks/products/reviews';
 import { useState, useEffect } from 'react';
+import { useCart } from '../context/CartContext';
+import SimplePage from '../components/SimplePage';
 import Button from '../components/Button';
 import IconCart from '../assets/IconCart';
 import IconNoCart from '../assets/IconNoCart';
 import Typography from '../components/Typography';
-import { useCart } from '../context/CartContext';
+import ReviewForm from '../components/ReviewForm';
+import Review from '../components/Review';
 
 const Product = () => {
   const { id } = useParams();
 
   const [data, setData] = useState({});
+  const [reviews, setReviews] = useState([]);
 
   const { removeFromCart, addToCart, checkProductInCart } = useCart();
 
@@ -20,7 +24,27 @@ const Product = () => {
   const fetchData = async () => {
     const res = await getProductById(id);
     setData(res.data);
+    const reviews = await getReviews(id);
+    setReviews(reviews.data);
   };
+
+  const getCalification = () => {
+    let calification = 0;
+    reviews.forEach((review) => {
+      calification += review.rating;
+    });
+    calification = calification / reviews.length;
+    return calification;
+  };
+
+  const stars = Array.from(
+    { length: Math.round(getCalification()) },
+    (_, index) => (
+      <span key={index} className='star'>
+        &#9733;
+      </span>
+    )
+  );
 
   useEffect(() => {
     fetchData();
@@ -35,16 +59,16 @@ const Product = () => {
             <img
               src={data.image}
               alt={data.name}
-              className='rounded-md mx-auto'
+              className='rounded-md mx-auto border w-[calc(100%-20rem)] object-cover'
             />
           </div>
-          <div className='card-body lg:w-1/2 p-1.5'>
+          <div className='card-body flex flex-col lg:w-1/2 p-1.5'>
             <div className='flex flex-col gap-2'>
               <Typography variant='h3' className='text-center'>
                 {data.name}
               </Typography>
               <Typography variant='p' className='text-center'>
-                Calificaciones: ☆☆☆☆☆
+                Calificaciones: {getCalification() > 0 ? stars : '☆☆☆☆☆'}
               </Typography>
               <Typography variant='p' className='text-center'>
                 <strong>${data.price}</strong>
@@ -81,6 +105,34 @@ const Product = () => {
                 {isProductInCart ? 'Quitar del carrito' : 'Agregar al carrito'}
               </Button>
             </div>
+          </div>
+        </div>
+        <div className='reviews mt-4 mx-24 w-[calc(100%-6rem)]'>
+          <div className='reviews-title'>
+            <Typography variant='h3' className='text-left mb-2'>
+              Haz una reseña
+            </Typography>
+          </div>
+          <div className='review-form mb-4'>
+            <ReviewForm productId={id} />
+          </div>
+          <div className='reviews'>
+            <Typography variant='h3' className='text-left mb-2'>
+              Todas las reseñas
+            </Typography>
+            {reviews && reviews.length > 0 ? (
+              <div className='reviews-card flex flex-col gap-4'>
+                {reviews.map((review) => (
+                  <Review key={review._id} review={review} />
+                ))}
+              </div>
+            ) : (
+              <div className='border border-black rounded-md p-4'>
+                <Typography variant='p' className='text-center'>
+                  No hay reseñas
+                </Typography>
+              </div>
+            )}
           </div>
         </div>
       </div>
