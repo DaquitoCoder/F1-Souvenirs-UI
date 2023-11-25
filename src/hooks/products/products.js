@@ -13,6 +13,8 @@ export const deleteProductById = async (id) => axios.delete(`/products/${id}`);
 
 export const getAllCategories = async () => axios.get(`/categories`);
 
+export const getCategoryById = async (id) => axios.get(`/categories/${id}`);
+
 export const addProduct = async (product) => axios.post(`/products`, product);
 
 export const editProduct = async (product) =>
