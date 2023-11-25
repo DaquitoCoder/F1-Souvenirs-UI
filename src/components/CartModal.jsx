@@ -62,33 +62,29 @@ const CartModal = ({ isOpen, onClose }) => {
                 )}
                 {cart.map((item) => (
                   <div
-                    className='card-row text-center flex flex-col md:flex-row justify-evenly items-center border-b border-black w-[calc(100%-2rem)]'
+                    className='card flex flex-col justify-around md:flex-row items-center mb-4 w-[calc(100%)]'
                     key={item._id}
                   >
-                    <div className='card-image m-2 text-center max-w-[150px] max-h-[150px]'>
+                    <div className='card-image rounded-2xl border border-black'>
                       <img
-                        src={
-                          item.image
-                            ? item.image
-                            : `https://via.placeholder.com/250`
-                        }
+                        src={item.image}
                         alt={item.name}
-                        className='w-25 rounded-lg object-cover'
+                        className='object-cover rounded-2xl h-48 w-48'
                       />
                     </div>
-                    <div className='card-text'>
-                      <Typography variant='p' className='text-center mx-2'>
+                    <div className='card-text md:w-1/3'>
+                      <Typography variant='h3' className='text-center mb-3'>
                         {item.name}
                       </Typography>
-                      <Typography variant='p' className='text-center'>
+                      <Typography variant='p' className='text-center mb-3'>
                         ${item.price}
                       </Typography>
                     </div>
-                    <div className='card-buttons flex justify-center items-center gap-2 mb-2'>
+                    <div className='card-buttons flex flex-row items-center gap-2'>
                       <Button
                         type='button'
                         variant='light'
-                        className='p-0.5 border border-black'
+                        className='p-0.5 border border-black h-[32px] w-[32px] justify-center'
                         onClick={() => addToCart(item)}
                         icon={<IconPlus size={24} />}
                       />
@@ -96,7 +92,7 @@ const CartModal = ({ isOpen, onClose }) => {
                       <Button
                         type='button'
                         variant='light'
-                        className='p-0.5 border border-black'
+                        className='p-0.5 border border-black h-[32px] w-[32px] justify-center'
                         onClick={() => removeFromCart(item)}
                         icon={<IconMinus size={24} />}
                       />
