@@ -28,12 +28,11 @@ const Profile = () => {
                   : 'Datos del usuario'}
               </Typography>
             </div>
-            <div className='card-body-content mb-4'>
+            <div className='card-body-content flex flex-col gap-2'>
               <Typography variant='p' className='text-center'>
                 <strong>Nombre: </strong>
                 {user.firstName + ' ' + user.lastName}
               </Typography>
-              <br />
               <Typography variant='p' className='text-center'>
                 <strong>Correo electrónico: </strong>
                 {user.email}
@@ -47,6 +46,14 @@ const Profile = () => {
                 className='w-full h-full px-2 py-4 text-white justify-center'
               >
                 Editar perfil
+              </Button>
+            </Link>
+            <Link to='/profile/my-orders' className='w-full'>
+              <Button
+                variant='light'
+                className='w-full px-2 py-4 text-black border border-gray-300 justify-center'
+              >
+                Ver mis ordenes
               </Button>
             </Link>
             {user.type === 'Admin' || user.type === 'Vendedor' ? (
