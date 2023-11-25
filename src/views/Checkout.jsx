@@ -7,7 +7,11 @@ import { IconMinus, IconPlus } from '@tabler/icons-react';
 const Checkout = () => {
   const { cart, addToCart, removeFromCart } = useCart();
 
-  console.log('cart', cart);
+  const handleBuy = () => {
+    alert('Compra realizada con éxito');
+    window.location.href = '/';
+    localStorage.removeItem('cart');
+  }
 
   return (
     <SimplePage>
@@ -24,17 +28,20 @@ const Checkout = () => {
                 key={item.id}
               >
                 <div className='card-image rounded-2xl border border-black'>
-                  <img src={item.image} className='object-cover rounded-2xl h-48 w-48' />
+                  <img
+                    src={item.image}
+                    className='object-cover rounded-2xl h-48 w-48'
+                  />
                 </div>
                 <div className='card-text md:w-1/3'>
-                  <Typography variant='h3'>{item.name}</Typography>
-                  <p>${item.price}</p>
+                  <Typography variant='h3' className='text-center mb-3'>{item.name}</Typography>
+                  <Typography variant='p' className='text-center mb-3'>${item.price}</Typography>
                 </div>
                 <div className='card-buttons flex flex-row items-center gap-2'>
                   <Button
                     type='button'
                     variant='light'
-                    className='p-0.5 border border-black h-[32px] w-[32px]'
+                    className='p-0.5 border border-black h-[32px] w-[32px] justify-center'
                     onClick={() => addToCart(item)}
                     icon={<IconPlus size={24} />}
                   />
@@ -42,7 +49,7 @@ const Checkout = () => {
                   <Button
                     type='button'
                     variant='light'
-                    className='p-0.5 border border-black h-[32px] w-[32px]'
+                    className='p-0.5 border border-black h-[32px] w-[32px] justify-center'
                     onClick={() => removeFromCart(item)}
                     icon={<IconMinus size={24} />}
                   />
@@ -53,10 +60,19 @@ const Checkout = () => {
             <Typography variant='p'>No hay productos agregados.</Typography>
           )}
 
-          <div className="total-checkout">
+          <div className='total-checkout'>
             <Typography variant='h2'>
-              Total: ${cart.reduce((acc, item) => acc + item.price * item.quantity, 0)}
+              Total: $
+              {cart.reduce((acc, item) => acc + item.price * item.quantity, 0)}
             </Typography>
+
+            <Button
+              variant='success'
+              className='w-full mt-4 px-2 justify-center items-center text-white py-2'
+              onClick={handleBuy}
+            >
+              Comprar
+            </Button>
           </div>
         </div>
       </div>
