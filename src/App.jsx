@@ -14,6 +14,7 @@ import Products from './views/Products';
 import MyProducts from './views/MyProducts';
 import ProductForm from './views/ProductForm';
 import Checkout from './views/Checkout';
+import Category from './views/Category';
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
               <Route path='/signup' element={<SignUp />} />
               <Route path='/products' element={<Products />} />
               <Route path='/product/:id' element={<Product />} />
-              <Route path='/category/:id' element={<h1 className='text-white'>Category</h1>} />
+              <Route path='/category/:id' element={<Category />} />
               <Route path='/checkout' element={<Checkout />} />
               <Route element={<ProtectedRoute />}>
                 <Route path='/profile/*'>
