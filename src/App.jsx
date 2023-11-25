@@ -15,6 +15,7 @@ import MyProducts from './views/MyProducts';
 import ProductForm from './views/ProductForm';
 import Checkout from './views/Checkout';
 import Category from './views/Category';
+import MyOrders from './views/MyOrders';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
                   <Route path='edit-product/:id' element={<ProductForm />} />
                   <Route path='edit-profile' element={<EditProfile />} />
                   <Route path='my-products' element={<MyProducts />} />
+                  <Route path='my-orders' element={<MyOrders />} />
                 </Route>
               </Route>
               <Route
