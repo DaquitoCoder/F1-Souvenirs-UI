@@ -3,17 +3,37 @@ import Typography from '../components/Typography';
 import Button from '../components/Button';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import { createOrder } from '../hooks/products/orders';
 import { IconMinus, IconPlus } from '@tabler/icons-react';
 
 const Checkout = () => {
   const { cart, addToCart, removeFromCart } = useCart();
 
-  const { isAuthenticated } = useAuth();
+  const { user, isAuthenticated } = useAuth();
 
-  const handleBuy = () => {
-    alert('Compra realizada con éxito');
-    window.location.href = '/';
-    localStorage.removeItem('cart');
+  const handleBuy = async () => {
+    const products = cart.map((item) => ({
+      product: item._id,
+      quantity: item.quantity,
+    }));
+
+    const request = {
+      user: user.id,
+      items: products,
+      totalAmount: cart.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+      ),
+    };
+
+    try {
+      await createOrder(request);
+      alert('Compra realizada con éxito!');
+      localStorage.removeItem('cart');
+      window.location.href = '/profile/my-orders';
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
