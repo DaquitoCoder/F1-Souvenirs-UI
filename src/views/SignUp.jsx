@@ -10,6 +10,7 @@ const SignUp = () => {
     register,
     handleSubmit,
     getValues,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -38,6 +39,7 @@ const SignUp = () => {
     };
 
     signup(newUser);
+    reset();
   };
 
   return (
