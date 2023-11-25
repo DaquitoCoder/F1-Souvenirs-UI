@@ -5,7 +5,7 @@ import Typography from './Typography';
 const Footer = () => {
   return (
     <footer className='bg-black'>
-      <Container className='text-white flex gap-4 flex-col sm:flex-row justify-around items-center p-4'>
+      <Container className='text-white flex gap-4 flex-col md:flex-row justify-around items-center p-4'>
         <div className='footer-title'>
           <Typography variant='h1'>F1 Souvenirs</Typography>
         </div>
