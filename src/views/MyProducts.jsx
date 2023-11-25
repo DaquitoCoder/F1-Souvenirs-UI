@@ -40,7 +40,7 @@ const MyProducts = () => {
     <SimplePage>
       <Container className='bg-white pb-4'>
         <div className='products-category mx-6 py-6 lg:mx-24'>
-          <div className='products-category-title flex flex-wrap justify-between mb-4'>
+          <div className='products-category-title flex flex-wrap gap-2 justify-center sm:justify-between mb-4'>
             <Typography variant='h1'>Mis productos</Typography>
             <Link to='/profile/new-product' className='flex'>
               <Button
@@ -52,9 +52,10 @@ const MyProducts = () => {
               </Button>
             </Link>
           </div>
-          <div className='products-category-items grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5'>
-            {dataProducts && dataProducts.length > 0 ? (
-              <>
+
+          {dataProducts && dataProducts.length > 0 ? (
+            <>
+              <div className='products-category-items grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5'>
                 {dataProducts.map((product) => (
                   <Card
                     key={product._id}
@@ -63,11 +64,13 @@ const MyProducts = () => {
                     buttonDeleteAction={openModal}
                   />
                 ))}
-              </>
-            ) : (
-              <p>No hay productos</p>
-            )}
-          </div>
+              </div>
+            </>
+          ) : (
+            <div className='text-center'>
+              <Typography variant='p'>No tienes productos creados</Typography>
+            </div>
+          )}
         </div>
       </Container>
       <ProductModal
