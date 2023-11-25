@@ -16,10 +16,10 @@ const Review = ({ review }) => {
             );
           })}
         </div>
-        <div className='review-user'>
-          Usuario de Internet con ID - {review.user._id}
+        <div className='review-user whitespace-break-spaces'>
+          {review.user.firstName + ' ' + review.user.lastName}
         </div>
-        <div className='review-comment'>{review.comment}</div>
+        <div className='review-comment whitespace-pre-wrap'>{review.comment}</div>
       </div>
     </div>
   );
