@@ -49,17 +49,18 @@ const Profile = () => {
                 Editar perfil
               </Button>
             </Link>
-            {user.type === 'Admin' ||
-              (user.type === 'Vendedor' && (
-                <Link to='/profile/my-products' className='w-full'>
-                  <Button
-                    variant='light'
-                    className='w-full px-2 py-4 text-black border border-gray-300 justify-center'
-                  >
-                    Ver mis productos
-                  </Button>
-                </Link>
-              ))}
+            {user.type === 'Admin' || user.type === 'Vendedor' ? (
+              <Link to='/profile/my-products' className='w-full'>
+                <Button
+                  variant='light'
+                  className='w-full px-2 py-4 text-black border border-gray-300 justify-center'
+                >
+                  Ver mis productos
+                </Button>
+              </Link>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>
