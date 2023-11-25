@@ -46,6 +46,12 @@ const Product = () => {
     )
   );
 
+  const handleBuy = () => {
+    alert('Compra realizada con éxito');
+    window.location.href = '/';
+    localStorage.removeItem('cart');
+  };
+
   useEffect(() => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,12 +60,12 @@ const Product = () => {
   return (
     <SimplePage>
       <div className='bg-white flex flex-col items-center justify-center py-12'>
-        <div className='border rounded-md border-gray-400 flex items-center justify-center flex-col lg:flex-row mx-24 w-[calc(100%-6rem)]'>
-          <div className='card-image p-1.5 md:w-1/2 h-max rounded-md'>
+        <div className='border rounded-md border-gray-400 flex items-center justify-center flex-col mx-24 w-[calc(100%-6rem)]'>
+          <div className='card-image p-1.5 h-max rounded-md flex justify-center'>
             <img
               src={data.image}
               alt={data.name}
-              className='rounded-md mx-auto border w-[calc(100%-20rem)] object-cover'
+              className='rounded-md mx-2 border object-cover w-[calc(100%-2rem)] h-[calc(100%-2rem)] max-w-[400px] max-h-[400px]'
             />
           </div>
           <div className='card-body flex flex-col lg:w-1/2 p-1.5'>
@@ -80,7 +86,8 @@ const Product = () => {
             <div className='card-button flex flex-col md:flex-row items-center justify-center gap-4 my-4'>
               <Button
                 variant='danger'
-                className='text-white px-6 h-12 uppercase tracking-wider'
+                className='text-white px-6 h-12 uppercase tracking-wider w-full justify-center items-center'
+                onClick={handleBuy}
               >
                 Comprar ahora
               </Button>
@@ -88,7 +95,7 @@ const Product = () => {
               <Button
                 type='button'
                 variant={isProductInCart ? 'danger' : 'light'}
-                className={`border border-gray-500 px-6 h-12 uppercase tracking-wider ${
+                className={`border w-full border-gray-500 px-6 uppercase h-full tracking-wider justify-center ${
                   isProductInCart ? 'bg-red-700 text-white' : ''
                 }`}
                 icon={
