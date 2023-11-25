@@ -2,16 +2,19 @@ import SimplePage from '../components/SimplePage';
 import Typography from '../components/Typography';
 import Button from '../components/Button';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import { IconMinus, IconPlus } from '@tabler/icons-react';
 
 const Checkout = () => {
   const { cart, addToCart, removeFromCart } = useCart();
 
+  const { isAuthenticated } = useAuth();
+
   const handleBuy = () => {
     alert('Compra realizada con éxito');
     window.location.href = '/';
     localStorage.removeItem('cart');
-  }
+  };
 
   return (
     <SimplePage>
@@ -25,17 +28,22 @@ const Checkout = () => {
             cart.map((item) => (
               <div
                 className='card flex flex-col justify-around md:flex-row items-center mb-4 w-[calc(100%)]'
-                key={item.id}
+                key={item._id}
               >
                 <div className='card-image rounded-2xl border border-black'>
                   <img
                     src={item.image}
+                    alt={item.name}
                     className='object-cover rounded-2xl h-48 w-48'
                   />
                 </div>
                 <div className='card-text md:w-1/3'>
-                  <Typography variant='h3' className='text-center mb-3'>{item.name}</Typography>
-                  <Typography variant='p' className='text-center mb-3'>${item.price}</Typography>
+                  <Typography variant='h3' className='text-center mb-3'>
+                    {item.name}
+                  </Typography>
+                  <Typography variant='p' className='text-center mb-3'>
+                    ${item.price}
+                  </Typography>
                 </div>
                 <div className='card-buttons flex flex-row items-center gap-2'>
                   <Button
@@ -57,23 +65,34 @@ const Checkout = () => {
               </div>
             ))
           ) : (
-            <Typography variant='p'>No hay productos agregados.</Typography>
+            <Typography variant='h2' className='text-center mb-4'>
+              No hay productos agregados.
+            </Typography>
           )}
 
           <div className='total-checkout'>
             <Typography variant='h2'>
               Total: $
-              {cart.reduce((acc, item) => acc + item.price * item.quantity, 0)}
+              {cart
+                .reduce((acc, item) => acc + item.price * item.quantity, 0)
+                .toFixed(2)}
             </Typography>
-
             <Button
               variant='success'
-              className='w-full mt-4 px-2 justify-center items-center text-white py-2'
+              className='w-full mt-4 px-2 justify-center items-center text-white py-2 disabled:bg-gray-400 disabled:text-gray-900 disabled:border-gray-900 disabled:cursor-not-allowed disabled:border'
+              disabled={cart.length === 0 || !isAuthenticated}
               onClick={handleBuy}
             >
               Comprar
             </Button>
           </div>
+          {!isAuthenticated && (
+            <div className='checkout-commentary'>
+              <Typography variant='p' className='text-center mt-2'>
+                Recuerda estar logeado para comprar productos.
+              </Typography>
+            </div>
+          )}
         </div>
       </div>
     </SimplePage>
