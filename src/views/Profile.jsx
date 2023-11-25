@@ -11,11 +11,11 @@ const Profile = () => {
   return (
     <SimplePage>
       <div className='bg-white flex flex-col items-center justify-center py-12'>
-        <div className='border rounded-md border-gray-400 flex items-center justify-center md:justify-around flex-col lg:flex-row mx-24 w-[calc(100%-6rem)] gap-4'>
+        <div className='border rounded-md border-gray-400 flex items-center justify-center md:justify-around flex-col mx-4 gap-4'>
           <div className='login-icon w-fit p-2 mt-4 text-center rounded-full border border-black bg-white'>
             <IconUserCircle size='128px' />
           </div>
-          <div className='card-body'>
+          <div className='card-body mx-2'>
             <div className='card-body-title mb-2'>
               <Typography variant='h2' className='text-center'>
                 ¡Bienvenido {user.firstName}!
@@ -39,24 +39,27 @@ const Profile = () => {
                 {user.email}
               </Typography>
             </div>
-            <div className='card-body-buttons flex flex-col md:flex-row gap-2 mb-4'>
-              <Link to='/profile/edit-profile' className='w-full'>
-                <Button
-                  variant='danger'
-                  className='w-full px-2 py-4 text-white justify-center'
-                >
-                  Editar perfil
-                </Button>
-              </Link>
-              <Link to='/profile/my-products' className='w-full'>
-                <Button
-                  variant='light'
-                  className='w-full px-2 py-4 text-black border border-gray-300 justify-center'
-                >
-                  Ver mis productos
-                </Button>
-              </Link>
-            </div>
+          </div>
+          <div className='card-body-buttons flex flex-col md:flex-row gap-2 mb-4 sm:mx-4'>
+            <Link to='/profile/edit-profile' className='w-full'>
+              <Button
+                variant='danger'
+                className='w-full h-full px-2 py-4 text-white justify-center'
+              >
+                Editar perfil
+              </Button>
+            </Link>
+            {user.type === 'Admin' ||
+              (user.type === 'Vendedor' && (
+                <Link to='/profile/my-products' className='w-full'>
+                  <Button
+                    variant='light'
+                    className='w-full px-2 py-4 text-black border border-gray-300 justify-center'
+                  >
+                    Ver mis productos
+                  </Button>
+                </Link>
+              ))}
           </div>
         </div>
       </div>
