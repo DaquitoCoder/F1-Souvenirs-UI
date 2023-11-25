@@ -21,6 +21,7 @@ const ProductForm = () => {
     register,
     handleSubmit,
     setValue,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -74,6 +75,7 @@ const ProductForm = () => {
       try {
         await addProduct(data);
         setData(['Producto agregado correctamente']);
+        reset();
       } catch (error) {
         setData(error.response.data.errors);
       }
