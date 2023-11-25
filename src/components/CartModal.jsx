@@ -103,7 +103,7 @@ const CartModal = ({ isOpen, onClose }) => {
             </div>
             <div className='bg-gray-50 px-4 py-3 sm:px-6'>
               <Typography variant='h2' className='text-center'>
-                Total: ${cartTotal}
+                Total: ${cartTotal.toFixed(2)}
               </Typography>
             </div>
             <div className='bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6'>
