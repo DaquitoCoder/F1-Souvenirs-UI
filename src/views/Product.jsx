@@ -46,10 +46,11 @@ const Product = () => {
     )
   );
 
+  
+
   const handleBuy = () => {
-    alert('Compra realizada con éxito');
-    window.location.href = '/';
-    localStorage.removeItem('cart');
+    addToCart(data);
+    window.location.href = '/checkout';
   };
 
   useEffect(() => {
