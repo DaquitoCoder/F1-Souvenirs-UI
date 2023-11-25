@@ -21,6 +21,7 @@ const Button = (props) => {
         props.className ? ` ${props.className}` : ''
       } flex items-center gap-2`}
       onClick={props.onClick}
+      disabled={props.disabled}
     >
       {props.icon && <div className='icon'>{props.icon}</div>}
       {props.children}
