@@ -94,7 +94,7 @@ const ProductForm = () => {
           {data && data.length > 0 && (
             <Alert message={data[0]} variant='success' />
           )}
-          <div className='product-form-card mx-4 min-w-fit border px-4 pt-2 pb-4 border-black rounded-xl bg-gray-300 w-[400px]'>
+          <div className='product-form-card mx-4 min-w-fit border px-4 pt-2 pb-4 border-black rounded-xl bg-gray-300 w-[calc(100vw-2rem)] max-w-[400px]'>
             <div className='product-form-card-body flex flex-col justify-center items-center'>
               <form autoComplete='off'>
                 <div className='form-group mb-6 flex flex-col md:flex-row gap-4'>
