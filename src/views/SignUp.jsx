@@ -46,7 +46,7 @@ const SignUp = () => {
     <SimplePage>
       <div className='bg-white flex flex-col items-center justify-center py-24'>
         {serverErrors.length > 0 && <Alert message={serverErrors[0]} />}
-        <div className='login-card mx-4 min-w-fit border px-4 pt-2 pb-4 border-black rounded-xl bg-gray-300 w-[400px]'>
+        <div className='login-card mx-4 min-w-fit border px-4 pt-2 pb-4 border-black rounded-xl bg-gray-300 w-[calc(100vw-2rem)] max-w-[400px]'>
           <div className='login-card-title flex gap-2 flex-col sm:flex-row justify-around items-center mb-4'>
             <Link to={'/login'}>Inicio de sesión</Link>
             <p className='border border-black p-2 rounded-md bg-white'>
