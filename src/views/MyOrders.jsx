@@ -38,9 +38,7 @@ const MyOrders = () => {
                 >
                   <div className='order-card-title'>
                     <Typography variant='h2'>Orden: {order._id}</Typography>
-                  </div>
-                  <div className='order-card-header'>
-                    <Typography variant='h3' className='text-center mb-2'>
+                    <Typography variant='p' className='text-left'>
                       Fecha de compra:{' '}
                       {dayjs(order.createdAt)
                         .locale('es')
@@ -48,7 +46,7 @@ const MyOrders = () => {
                     </Typography>
                   </div>
                   <div className='order-card-body'>
-                    <Typography variant='h3' className='text-center mb-2'>
+                    <Typography variant='h3' className='text-center mb-4'>
                       Productos
                     </Typography>
                     <div className='order-card-body-products'>
