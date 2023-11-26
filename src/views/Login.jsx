@@ -30,18 +30,18 @@ const Login = () => {
     <SimplePage>
       <div className='bg-white flex flex-col items-center justify-center py-24'>
         {serverErrors.length > 0 && <Alert message={serverErrors[0]} />}
-        <div className='login-card mx-4 min-w-fit border px-4 pt-2 pb-4 border-black rounded-xl bg-gray-300 w-[400px]'>
+        <div className='login-card mx-4 min-w-fit border px-4 pt-2 pb-4 border-black rounded-xl bg-gray-300 w-[calc(100vw-2rem)] max-w-[400px]'>
           <div className='login-card-title flex gap-2 flex-col sm:flex-row justify-around items-center mb-4'>
-            <p className='border border-black p-2 rounded-md bg-white'>
+            <Typography variant='p' className='border border-black p-2 rounded-md bg-white'>
               Inicio de sesión
-            </p>
+            </Typography>
             <Link to={'/signup'}>Registrarse</Link>
           </div>
           <div className='login-card-body flex flex-col justify-center items-center'>
             <div className='login-icon w-fit p-2 text-center rounded-full border border-black bg-white'>
               <IconUserCircle size='128px' />
             </div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)} className='w-full'>
               <div className='form-group mb-6'>
                 <label htmlFor='email'>Correo electrónico</label>
                 <input
@@ -77,15 +77,12 @@ const Login = () => {
                   </p>
                 )}
               </div>
-              <div className='form-buttons flex items-center justify-around gap-4 flex-col sm:flex-row'>
+              <div className='form-buttons flex items-center justify-around gap-4 flex-col sm:flex-row w-full'>
                 <input
                   type='submit'
                   value='Iniciar sesión'
                   className='bg-[#B40500] hover:bg-red-700 focus:outline-none focus:ring-red-500 active:bg-red-800 py-2 px-4 rounded-xl text-white'
                 />
-                <Typography variant='p' className='text-center'>
-                  <Link to={'/forgot-password'}>¿Olvidaste la contraseña?</Link>
-                </Typography>
               </div>
             </form>
           </div>
