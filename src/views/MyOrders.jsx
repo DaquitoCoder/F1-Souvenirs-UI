@@ -33,11 +33,12 @@ const MyOrders = () => {
             <>
               {data.map((order) => (
                 <div
-                  className='order-card border border-radius rounded-md p-4 mb-4 flex flex-col gap-4'
+                  className='order-card border border-radius rounded-md p-4 mb-4 flex flex-col gap-4 w-[calc(100vw-4rem)] md:w-[calc(100vw-24rem)]'
                   key={order._id}
                 >
                   <div className='order-card-title'>
-                    <Typography variant='h2'>Orden: {order._id}</Typography>
+                    <Typography variant='h2'>Orden</Typography>
+                    <Typography variant='p'>{String(order._id)}</Typography>
                     <Typography variant='p' className='text-left'>
                       Fecha de compra:{' '}
                       {dayjs(order.createdAt)
