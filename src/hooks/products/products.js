@@ -18,4 +18,4 @@ export const getCategoryById = async (id) => axios.get(`/categories/${id}`);
 export const addProduct = async (product) => axios.post(`/products`, product);
 
 export const editProduct = async (product) =>
-  axios.put(`/products/${product.id}`, product);
+  axios.put(`/products/${product._id}`, product);
