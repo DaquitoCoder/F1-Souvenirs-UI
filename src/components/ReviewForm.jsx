@@ -21,7 +21,7 @@ const ReviewForm = ({ productId }) => {
       return;
     }
     data.rating = rating;
-    data.user = user.id;
+    data.user = user._id;
     data.product = productId;
 
     try {
@@ -29,7 +29,7 @@ const ReviewForm = ({ productId }) => {
       alert('Reseña creada con éxito');
       window.location.reload();
     } catch (error) {
-      alert('Error al crear la reseña');
+      alert('Error al crear la reseña: ' + error.response.data.message);
     }
   };
 
