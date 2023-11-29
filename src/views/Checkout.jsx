@@ -18,7 +18,7 @@ const Checkout = () => {
     }));
 
     const request = {
-      user: user.id,
+      user: user._id,
       items: products,
       totalAmount: cart.reduce(
         (acc, item) => acc + item.price * item.quantity,
@@ -32,6 +32,7 @@ const Checkout = () => {
       localStorage.removeItem('cart');
       window.location.href = '/profile/my-orders';
     } catch (error) {
+      alert('Error al realizar la compra');
       console.log(error);
     }
   };
