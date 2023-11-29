@@ -46,7 +46,7 @@ const EditProfile = () => {
       newPassword: data.newPassword,
       password: data.password,
       type: user.type,
-      id: user.id || user._id,
+      _id: user._id,
     };
     try {
       const res = await editUserDataRequest(newUser);

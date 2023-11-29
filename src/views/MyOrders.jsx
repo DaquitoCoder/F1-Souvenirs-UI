@@ -13,14 +13,14 @@ const MyOrders = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await getOrders(user.id);
+        const res = await getOrders(user._id);
         setData(res.data);
       } catch (error) {
         setData([error.response.data.message]);
       }
     };
     fetchData();
-  }, [user.id]);
+  }, [user._id]);
 
   return (
     <SimplePage>

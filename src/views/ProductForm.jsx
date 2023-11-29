@@ -62,7 +62,7 @@ const ProductForm = () => {
       // Edit product
       const newData = {
         ...data,
-        id: id,
+        _id: id,
       };
       try {
         await editProduct(newData);
